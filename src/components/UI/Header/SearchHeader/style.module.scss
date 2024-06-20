@@ -1,0 +1,22 @@
+.wrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  gap: 20px;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+  padding: 14px 24px;
+  box-shadow: 0px -1px 0px 0px #e2e2ea inset;
+  z-index: 12;
+  //   margin-bottom: 100px;
+}
+// .profile {
+//   display: flex;
+//   align-items: center;
+//   position: inherit;
+//   right: 24px;
+// }

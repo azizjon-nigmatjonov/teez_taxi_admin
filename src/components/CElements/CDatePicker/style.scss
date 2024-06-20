@@ -1,0 +1,76 @@
+.react-datepicker {
+  display: flex;
+}
+
+.custom-datepicker {
+  border: 1px solid var(--grayDark);
+  padding: 8px 6px;
+  border-radius: 12px;
+}
+
+.react-datepicker__day--selected {
+  background-color: #09B0E7;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected {
+  background-color: #09B0E7;
+}
+
+
+#customDatePicker {
+  width: 100%;
+
+  .MuiOutlinedInput-notchedOutline,
+  .MuiOutlinedInput-root {
+    border-color: var(--lineGray);
+    border-radius: 12px;
+    height: 48px;
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--gray20);
+      border-radius: 8px;
+      @include common-shadow;
+    }
+
+
+  }
+
+  .MuiFormControl-root {
+    width: 100%;
+  }
+
+  .MuiTextField-root.error {
+    .MuiInputBase-root {
+      .MuiOutlinedInput-notchedOutline {
+        border-color: var(--error);
+      }
+    }
+  }
+
+  .Mui-focused {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--primary);
+      border-width: 1px;
+    }
+  }
+
+  .MuiInputAdornment-root {
+    z-index: 9;
+    background-color: white;
+    height: 100%;
+    width: 40px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .sd:hover {
+    background-color: white;
+    color: var(--black) !important;
+  }
+
+  .Mui-focused {
+    .MuiOutlinedInput-notchedOutline {
+      border: 2px solid var(--main) !important;
+    }
+  }
+}

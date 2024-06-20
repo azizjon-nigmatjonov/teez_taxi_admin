@@ -1,0 +1,425 @@
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input {
+  caret-color: var(--main);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.MuiMenu-paper {
+  ul {
+    @include remove-scroll;
+  }
+}
+
+#cselect,
+#HFMultipleSelect {
+  width: 100%;
+
+  .MuiInputBase-root {
+    width: 100%;
+    height: 40px;
+    outline: none;
+    width: 100%;
+    border-radius: 8px;
+
+    svg {
+      display: none;
+    }
+
+    @include common-shadow;
+    border: 1px solid var(--gray20);
+
+    &.Mui-focused {
+      .MuiOutlinedInput-notchedOutline {
+        border-color: var(--main);
+      }
+    }
+
+    fieldset {
+      border: none;
+      border-radius: 8px;
+      background-color: transparent;
+    }
+
+    input {
+      width: 100%;
+      border-radius: 8px;
+    }
+  }
+}
+
+.MuiPaper-root {
+  border-radius: 12px !important;
+
+  ul {
+    background-color: white;
+    max-height: 300px;
+    overflow: scroll;
+
+    .Mui-selected {
+      color: var(--main);
+      font-weight: 500;
+    }
+  }
+}
+
+#hfInputMask {
+  input {
+    background-color: transparent;
+    height: 40px;
+    width: 100%;
+    border: 1px solid var(--gray20);
+    border-radius: 8px;
+    padding: 0 14px;
+    font-size: 14px;
+    @include common-shadow;
+
+    &:focus {
+      outline: 1.5px solid var(--main);
+    }
+  }
+}
+
+#SwitchBtn {
+  &.checked {
+    .MuiSwitch-track {
+      background-color: #ff5b01;
+      opacity: 1;
+    }
+  }
+
+  .MuiSwitch-root {
+    .MuiSwitch-thumb {
+      background-color: white;
+      border: 1px solid var(--gray20);
+      box-shadow: none;
+    }
+  }
+}
+
+.MuiModal-root {
+  z-index: 99 !important;
+}
+
+#basicDatePicker {
+  .MuiInputBase-root {
+    background-color: white;
+    border-radius: 8px;
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--gray20);
+      @include common-shadow;
+      height: 44px;
+    }
+    .MuiInputBase-input {
+      fieldset {
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+#multiDatePicker {
+  width: 100%;
+
+  .rmdp-container {
+    width: 100%;
+  }
+
+  .MuiInputBase-root {
+    .MuiOutlinedInput-notchedOutline,
+    .MuiOutlinedInput-root {
+      border-color: var(--lineGray);
+      border-radius: 8px;
+      height: 40px;
+      @include common-shadow;
+      .MuiOutlinedInput-notchedOutline {
+        // border-color: var(--gray20);
+        border-radius: 8px;
+      }
+    }
+
+    .MuiFormControl-root {
+      width: 100%;
+    }
+
+    .MuiTextField-root.error {
+      .MuiInputBase-root {
+        .MuiOutlinedInput-notchedOutline {
+          border-color: var(--error);
+        }
+      }
+    }
+
+    .Mui-focused {
+      .MuiOutlinedInput-notchedOutline {
+        border-color: var(--primary);
+        border-width: 1px;
+      }
+    }
+
+    .MuiInputAdornment-root {
+      z-index: 9;
+      background-color: white;
+      height: 100%;
+      width: 40px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .sd:hover {
+      background-color: white;
+      color: var(--black) !important;
+    }
+
+    .Mui-focused {
+      .MuiOutlinedInput-notchedOutline {
+        border: 2px solid var(--main) !important;
+      }
+    }
+  }
+
+  .MuiButtonBase-root {
+    &.Mui-checked {
+      color: var(--main) !important;
+    }
+  }
+}
+
+#multiDatePicker {
+  .rmdp-day {
+    &:hover {
+      background-color: red !important;
+    }
+  }
+
+  .rmdp-day span {
+    &:hover {
+      background-color: red;
+    }
+  }
+
+  .rmdp-input {
+    background-color: transparent;
+    height: 42px;
+    border-radius: 10px;
+  }
+}
+
+.custom-btn,
+.success-btn,
+.cancel-btn,
+.new-btn {
+  background-color: var(--main);
+  color: white;
+  text-transform: none;
+  border-radius: 8px;
+  border: 1px solid var(--gray30);
+  height: 40px;
+  padding: 0 20px;
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  font-weight: 500;
+  @include center-center;
+  @include common-shadow;
+  position: relative;
+
+  &.form {
+    height: 52px;
+  }
+
+  .MuiCircularProgress-root {
+    margin-right: 16px;
+
+    svg {
+      color: white;
+    }
+  }
+
+  &.disabled {
+    background-color: var(--gray20);
+    color: var(--black);
+  }
+}
+
+.Mui-disabled {
+  background-color: var(--gray20);
+  color: var(--black);
+  cursor: not-allowed !important;
+}
+
+.unpermit {
+  cursor: not-allowed;
+  position: relative;
+  background-color: var(--gray20);
+
+  &:hover {
+    &::after {
+      content: "Permission o'rnatilmagan!";
+      white-space: nowrap;
+      position: absolute;
+      left: -70px;
+      top: -24px;
+      color: var(--main);
+    }
+  }
+}
+
+.custom-btn.success {
+  background-color: var(--green);
+}
+
+.success-btn {
+  background-color: var(--green);
+}
+
+.cancel-btn {
+  background-color: var(--gray20);
+  color: var(--black);
+  text-transform: none;
+  height: 39px;
+}
+
+.new-btn {
+  background-color: var(--blue10);
+  color: var(--blue90);
+}
+
+.default-btn {
+  height: 40px;
+  padding: 0 20px;
+  border: 1px solid var(--gray20);
+  border-radius: 8px;
+  @include common-shadow;
+  @include center-center;
+}
+
+.accordion {
+  color: #444;
+  cursor: pointer;
+  // padding: 18px;
+  height: 40px !important;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: background-color 0.6s ease;
+}
+
+.accordion-line {
+  height: 1px;
+  width: 280px;
+  background: var(
+    --Light-Mode-Container-Divider,
+    radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0) 100%
+    )
+  );
+  transition: height 0.3s ease;
+  margin: 0 auto;
+}
+
+.common-shadow {
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
+    0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+}
+
+.card-shadow {
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
+    0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+}
+
+.container {
+  max-width: 100vw !important;
+  @apply px-5;
+}
+
+.common-btn {
+  @include common-btn;
+}
+
+#breathing-button {
+  -webkit-animation: breathing 2s ease-out infinite normal;
+  animation: breathing 2s ease-out infinite normal;
+}
+
+@-webkit-keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  25% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  60% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+@keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  25% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  60% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+
+#mouse-over-popover-custom {
+  left: 70px;
+  top: -25px;
+  box-shadow: none !important;
+  z-index: 999;
+  .wrapper {
+    background-color: red;
+    box-shadow: none;
+    z-index: 999;
+  }
+}

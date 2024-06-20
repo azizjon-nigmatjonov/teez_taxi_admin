@@ -1,0 +1,108 @@
+$baseRadius: 10px;
+$paddingBlock: 24px;
+$lg: 18px;
+$xl2: 24px;
+
+@mixin center-between() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin between() {
+  display: flex;
+  justify-content: space-between;
+}
+@mixin center() {
+  display: flex;
+  align-items: center;
+}
+@mixin center-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin center-end() {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+@mixin end-center() {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+@mixin end-end() {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+@mixin end-between() {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+@mixin column() {
+  display: flex;
+  flex-direction: column;
+}
+@mixin column-reverse() {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@mixin remove-scroll() {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+@mixin design-scroll() {
+  &::-webkit-scrollbar {
+    display: block;
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+    border: 1px solid var(--gray20);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--gray30);
+    border-radius: 4px;
+  }
+}
+.remove-scroll {
+  @include remove-scroll;
+}
+.designed-scroll {
+  @include design-scroll;
+}
+@mixin smooth-scroll() {
+  scroll-behavior: smooth;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
+}
+
+@mixin common-btn() {
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--gray30);
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
+    0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+
+  &:focus {
+    border-color: var(--main);
+  }
+}
+
+@mixin common-shadow() {
+  box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
+    0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+}
+
+body {
+  @include remove-scroll;
+}

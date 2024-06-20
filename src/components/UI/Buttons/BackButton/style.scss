@@ -1,0 +1,29 @@
+.BackButton {
+  width: 25px;
+  height: 25px;
+  // border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  transition-duration: 0.3s;
+  color: var(--gray);
+  // border: 1px solid var(--main);
+  
+  .icon {
+    font-size: 19px;
+  }
+  
+  .arrow {
+    font-size: 12px;
+    margin-inline: 8px;
+    color: #D0D5DD;
+  }
+
+  // &:hover {
+  //   border-color: var(--main);
+  //   color: var(--main);
+  // }
+}

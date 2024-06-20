@@ -1,0 +1,114 @@
+#addBtn,
+#filterButton,
+#deleteButton,
+#saveButton,
+#disableButton,
+#successBtn,
+#activeFilterButton,
+.btn {
+  margin: 0;
+  width: 100%;
+
+  button {
+    background-color: var(--main);
+    color: white;
+    text-transform: none;
+    border-radius: 8px;
+    border: 1px solid var(--lineGray);
+    height: 40px;
+    padding: 0 12px;
+    width: 100%;
+    white-space: nowrap;
+    font-weight: 500;
+    @include common-btn;
+
+    &.disabled {
+      background-color: var(--gray20);
+      color: var(--black);
+      cursor: not-allowed;
+      svg {
+        color: var(--main);
+      }
+    }
+  }
+}
+
+#successBtn {
+  button {
+    background-color: var(--green);
+  }
+}
+
+#saveButton {
+  button {
+    background-color: var(--green);
+  }
+}
+
+#disableButton {
+  button {
+    background-color: var(--darkGray);
+    color: var(--black);
+  }
+}
+
+#filterButton {
+  button {
+    height: auto;
+    background-color: white;
+    padding: 0 0 0 12px;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+
+    span {
+      width: 95px;
+      text-align: left;
+      color: var(--gray);
+    }
+
+    .icon {
+      width: 40px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-left: 1px solid var(--lightGray);
+    }
+  }
+}
+
+#deleteButton {
+  button {
+    background-color: var(--lineGray);
+
+    span {
+      color: var(--black);
+    }
+  }
+}
+
+#activeFilterButton {
+  button {
+    height: auto;
+    background-color: #ffefe6;
+    padding: 0 0 0 12px;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+
+    span {
+      width: 95px;
+      text-align: left;
+      color: #993701;
+    }
+
+    .icon {
+      width: 40px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+export const header = {
+  "passengers/main": "passengers_list",
+  "drivers/route": "Viloyat qatnovi",
+  "settings/profile": "Profil sahifasi",
+  "drivers/cars": "Mashinalar",
+  "admins/admin": "Adminlar",
+  "passengers/active_passengers": "Aktiv yo'lovchilar",
+
+  "passengers/statistics": "Statistika: yo‘lovchi",
+  "drivers/main": "Haydovchilar ro'yxati",
+  "drivers/active": "Aktiv haydovchilar",
+  "drivers/statistics": "Statistika: haydovchi",
+  "infos/calendar": "Kalendar",
+  "infos/chats": "Chatlar",
+  "admins/rolls": "Rollar",
+  "settings/price_control": "Narxlar nazorati",
+  "settings/sms": "SMS xabarnoma",
+  "partners/list": "Hamkorlar sahifasi",
+  "partners/partner": "Hamkor",
+  "drivers/driver": "Haydovchi",
+  "drivers/car": "Haydovchilar ro'yxati",
+};

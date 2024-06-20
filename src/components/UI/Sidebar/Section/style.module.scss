@@ -1,0 +1,79 @@
+:root {
+  --Light-Mode-Container-Divider: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.collapedPanel {
+  position: absolute;
+  left: 70px;
+  bottom: 0;
+}
+.section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  .section::before {
+    content: "";
+    display: block;
+    width: 400px;
+    height: 1000px;
+    position: absolute;
+  }
+
+  .title {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+
+
+  .menu {
+    &__link {
+      padding: 0 $paddingBlock;
+      display: flex;
+      align-items: center;
+      column-gap: 20px;
+      height: 50px;
+      cursor: pointer;
+
+      &:last-child {
+        margin-bottom: 6px;
+      }
+    }
+  }
+}
+
+.customAccordion .MuiPaper-root {
+  border-radius: 0 !important;
+}
+
+.customAccordion {
+  box-shadow: none !important;
+  // border-bottom: 1px solid #ccc;
+
+  &.MuiAccordion-root {
+    border-radius: 0 !important;
+  }
+
+  &.MuiPaper-rounded {
+    border-radius: 0 !important;
+  }
+
+  &.MuiAccordion-root:before {
+    background-color: transparent !important;
+  }
+
+  & .MuiAccordionSummary-root {
+    border-radius: 0 !important;
+  }
+
+  & .MuiAccordionDetails-root {
+    border-radius: 0 !important;
+  }
+}
+
+.menu_link {
+  position: relative;
+}

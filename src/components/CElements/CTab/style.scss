@@ -1,0 +1,28 @@
+#CTabID {
+  min-width: auto;
+  max-width: auto;
+  width: 100% !important;
+  height: 50px !important;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  // border: 1px solid var(--gray30);
+  border-radius: 10px;
+  background-color: white;
+  .MuiBox-root  {
+    height: 40px;
+  }
+  .MuiTabs-scroller {
+    height: 40px;
+  }
+  .MuiButtonBase-root {
+    height: 40px !important;
+    min-height: 40px;
+    max-height: 40px;
+  }
+
+  .text {
+    z-index: 2;
+    position: relative;
+  }
+}

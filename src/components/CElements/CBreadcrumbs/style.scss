@@ -1,0 +1,56 @@
+.CBreadcrumbs-wrapper {
+  display: flex;
+  align-items: center;
+}
+.CBreadcrumbs {  
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    &.link {
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        color: var(--main);
+
+        .breadcrumb-label {
+          color: var(--main);
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &.last {
+      cursor: auto;
+      .breadcrumb-label {
+        color: var(--gray);
+      }
+      &:hover {
+        color: var(--main);
+
+        .breadcrumb-label {
+          color: var(--gray);
+        }
+      }
+    }
+  }
+
+  .breadcrumb-label {
+    font-size: 14px;
+    color: var(--main);
+    font-weight: 600;
+    white-space: pre-wrap;
+  }
+
+  &.small {
+    .breadcrumb-label {
+      margin-left: 0px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+  .MuiBreadcrumbs-separator {
+    margin: 0 5px;
+    color: #000;
+  }
+}

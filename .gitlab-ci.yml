@@ -1,0 +1,37 @@
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - node -v
+  - npm -v
+  - yarn -v
+
+build:
+  stage: build
+  image: node:20
+  script:
+    - echo "VITE_BASE_URL=VITE_BASE_URL"
+    - echo "VITE_BASE_URL=VITE_BASE_URL" > .env
+    - yarn install
+    - yarn build
+  artifacts:
+    paths:
+      - build/
+
+deploy:
+  stage: deploy
+  before_script:
+    - apt-get update -y
+    - apt-get install -y openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "cd $PROJECT_PATH"
+  script:
+    - scp -r ./build/* $SSH_USER@$SSH_HOST:$PROJECT_PATH
+  only:
+    - main

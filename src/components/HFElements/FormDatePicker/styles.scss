@@ -1,0 +1,53 @@
+#cDatepicker {
+  .MuiOutlinedInput-notchedOutline {
+    border: 1px solid var(--main);
+  }
+
+  .Mui-focused {
+    .MuiOutlinedInput-notchedOutline {
+      border: 2px solid var(--main) !important;
+    }
+  }
+  &:hover {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--main);
+    }
+  }
+}
+.rmdp-container {
+  width: 100%;
+}
+.rmdp-selected {
+  .sd {
+    border-radius: 10px !important;
+    background-color: var(--main) !important;
+  }
+}
+span.sd.highlight.highlight-red {
+  &:hover {
+    background-color: var(--lineGray) !important;
+    border-radius: 10px;
+    color: var(--error) !important;
+  }
+}
+.rmdp-day:not(.rmdp-disabled, .rmdp-day-hidden) span:hover {
+  background-color: var(--lineGray) !important;
+  border-radius: 10px;
+  color: var(--black) !important;
+}
+.rmdp-today {
+  .sd {
+    border-radius: 10px !important;
+    background-color: var(--darkGray) !important;
+  }
+}
+
+#cDatepicker {
+  .MuiOutlinedInput-notchedOutline {
+    border-color: var(--lineGray);
+    border-radius: 10px;
+  }
+  .MuiInputBase-root {
+    height: 50px;
+  }
+}

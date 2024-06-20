@@ -1,0 +1,12 @@
+.MuiSlider-root {
+    .MuiSlider-thumb {
+        background-color: var(--main);
+    }
+    .MuiSlider-rail  {
+        background-color: #c4c4ca;
+    }
+    .MuiSlider-track {
+        background-color: #c4c4ca;
+        border: none;
+    }
+}

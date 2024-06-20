@@ -1,0 +1,239 @@
+#table {
+  // max-height: 620px;
+
+  .MuiList-root {
+    .MuiButtonBase-root {
+      display: flex;
+      justify-content: space-between !important;
+    }
+  }
+  
+  .MuiPaper-root {
+    &::-webkit-scrollbar {
+      display: block !important;
+    }
+    .MuiList-root {
+      &::-webkit-scrollbar {
+        display: block !important;
+      }
+    }
+  }  
+}
+
+.CTableContainer {
+  width: 100%;
+  .table {
+    width: 100%;
+    // border-radius: $lg;
+    position: relative;
+    color: var(--black);
+    background-color: white;
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+  }
+}
+.table__pagination {
+  border-bottom-right-radius: $lg;
+  border-bottom-left-radius: $lg;
+  min-height: 50px;
+  @include center;
+  padding: 0 24px;
+  background-color: white;
+
+  .MuiPagination-ul {
+    display: flex;
+    gap: 6px;
+    @include remove-scroll;
+    .MuiPaginationItem-page {
+      background-color: transparent;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .MuiButtonBase-root {
+      cursor: pointer;
+      svg {
+        display: none;
+      }
+    }
+    li {
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      @include center-center;
+
+      button {
+        color: var(--gray);
+      }
+
+      .Mui-selected {
+        color: var(--main);
+        font-weight: 700;
+      }
+    }
+    li:first-child {
+      border: 1px solid var(--gray20);
+      button {
+        background-image: url("/svg/arrow-left.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+    li:last-child {
+      border: 1px solid var(--gray20);
+      button {
+        background-image: url("/svg/arrow-right.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+}
+
+.CTableHead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.CTableCell {
+  padding: 0 24px !important;
+  background-color: transparent !important;
+  color: var(--black);
+  border-right: 1px solid var(--gray20);
+  border-bottom: 1px solid var(--gray20);
+
+  &:first-child {
+    margin-top: 30px;
+    border-left: 0;
+  }
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+.MuiTableRow-root {
+  height: 45px !important;
+
+  &:last-child {
+    .CTableCell {
+      border-bottom: 0;
+    }
+  }
+
+  &.clickable {
+    cursor: pointer;
+    transition-duration: 0.2s;
+    &:hover {
+      background-color: var(--gray20);
+    }
+  }
+}
+
+.CTableBody {
+  z-index: 1;
+}
+
+#table {
+  .CTableContainer {
+    border-radius: 18px !important;
+    box-shadow: none;
+  }
+}
+
+thead {
+  height: 60px;
+  th {
+    position: relative;
+    padding: 0 !important;
+    .cell {
+      height: 40px;
+      padding: 24px !important;
+      color: var(--black);
+      font-weight: 600;
+      text-transform: uppercase;
+      width: 100%;
+      @include center;
+      border-right: 1px solid var(--gray20);
+      border-bottom: 1px solid var(--gray20);
+      position: relative;
+    }
+
+    &:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    &:last-child {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+}
+
+.resizer {
+  position: absolute;
+  top: 14px;
+  right: -12px;
+  width: 28px;
+  cursor: col-resize;
+  user-select: none;
+  height: 80px !important;
+  z-index: 2;
+}
+.resizer:hover,
+.resizing {
+  background-image: url("/svg/expandSide.svg");
+  background-repeat: no-repeat;
+}
+
+.resizable {
+  border: 1px solid red;
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+
+#tableActions {
+  position: relative;
+  @include center-center;
+  gap: 12px;
+  .delete,
+  .edit {
+    // border: 1px solid #777;
+    width: 28px;
+    height: 28px;
+    @include center-center;
+    border-radius: 4px;
+    svg {
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.5);
+      }
+    }
+  }
+  .edit {
+    color: #111;
+  }
+  .delete {
+    color: red;
+  }
+  .popover {
+    // background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0;
+    top: -10px;
+    height: 100%;
+    z-index: 99;
+  }
+}
+
+.MuiPaper-root {
+  background-color: transparent !important;
+}

@@ -1,0 +1,9 @@
+.label {
+  margin-bottom: 5px;
+  font-weight: 500;
+
+  .required {
+    color: var(--error);
+    margin-right: 2px;
+  }
+}

@@ -1,0 +1,13 @@
+.btns {
+  display: flex;
+  gap: 16px;
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  bottom: 0;
+  border-top: 1px solid var(--main)Borders;
+  height: 70px;
+  @include alignCenter;
+  justify-content: flex-end;
+  padding-right: 80px;
+}
