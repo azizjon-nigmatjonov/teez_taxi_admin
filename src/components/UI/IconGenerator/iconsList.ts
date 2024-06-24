@@ -13,6 +13,7 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MapIcon from '@mui/icons-material/Map';
+import SettingsIcon from "@mui/icons-material/Settings";
 
 export const iconsList = [
   {
@@ -78,6 +79,10 @@ export const iconsList = [
   {
     name: "map",
     component: MapIcon
+  },
+  {
+    name: "settings",
+    component: SettingsIcon
   },
   {
     name: "price_control",

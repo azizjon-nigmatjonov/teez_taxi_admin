@@ -10,7 +10,7 @@ import fileService from "../../../services/fileService";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { CircularProgress } from "@mui/material";
 import CLabel from "../CLabel";
-import { RxCross2 } from "react-icons/rx";
+// import { RxCross2 } from "react-icons/rx";
 import { Closer } from "../../../components/UI/Closer";
 interface Props {
   error?: any;
@@ -24,7 +24,7 @@ interface Props {
   style?: any;
   zoomImg?: boolean;
   required?: boolean;
-  onChange?: any
+  onChange?: any;
 }
 
 export const DImageUploadUI = ({
@@ -39,13 +39,13 @@ export const DImageUploadUI = ({
   style,
   zoomImg = false,
   required = false,
-  onChange = () => {}
+  onChange = () => {},
 }: Props) => {
   const inputRef: any = useRef(null);
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
   const [imageTool, setImageTool] = useState(false);
-  const [viewImage, setViewImage] = useState("")
+  const [viewImage, setViewImage] = useState("");
 
   const inputChangeHandler = (e: any) => {
     setLoading(true);
@@ -60,7 +60,7 @@ export const DImageUploadUI = ({
       .then((res: any) => {
         setValue(name, res?.data.data?.id);
         setImage(res?.data?.data?.original_url);
-        onChange(res?.data.data?.id)
+        onChange(res?.data.data?.id);
       })
       .finally(() => {
         setLoading(false);
@@ -89,7 +89,7 @@ export const DImageUploadUI = ({
   };
 
   const handlerZoom = (e: any) => {
-    setViewImage(e)
+    setViewImage(e);
     // navigateQuery({ show: "show", img: e });
   };
   // console.log(zoom);
@@ -135,8 +135,7 @@ export const DImageUploadUI = ({
         )}
 
         <div
-          className={`cursor-pointer flex overflow-hidden text-[var(--gray)] font-medium border border-[var(--lineGray)] rounded-[10px] h-[50px] bg-[var(--lightGray)] flex-col justify-center items-center max-w-[250px]  min-w-[249px]`}
-          style={style}
+          className={`cursor-pointer flex overflow-hidden text-[var(--gray)] font-medium border border-[var(--lineGray)] rounded-[8px] h-[100px] bg-[var(--lightGray)] flex-col justify-center items-center max-w-[250px]  min-w-[249px]`}
         >
           <span>{text}</span>
           {defaultValue || (image && !loading) ? (
@@ -159,9 +158,7 @@ export const DImageUploadUI = ({
             type="file"
             className="hidden"
             ref={inputRef}
-            onChange={(e: any) => [
-              inputChangeHandler(e)
-            ]}
+            onChange={(e: any) => [inputChangeHandler(e)]}
             accept=".png, .jpg, .jpeg"
           />
 
@@ -200,18 +197,20 @@ export const DImageUploadUI = ({
               />
               <div
                 onClick={() => {
-                  setViewImage("")
+                  setViewImage("");
                 }}
                 className="bg-white rounded-lg inline-block p-[10px] absolute top-10 right-10 z-[99]"
               >
-                <RxCross2 size={15} />
+                {/* <RxCross2 size={15} /> */}
               </div>
             </div>
             <div className="bg-black/20 w-full h-full fixed top-0 left-0" />
           </div>
         )}
       </div>
-      {!!viewImage && <Closer handleClose={() => setViewImage("")} classes="z-[99]" />}
+      {!!viewImage && (
+        <Closer handleClose={() => setViewImage("")} classes="z-[99]" />
+      )}
 
       {imageTool && (
         <div
