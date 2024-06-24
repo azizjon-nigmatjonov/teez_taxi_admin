@@ -1,12 +1,12 @@
 import { useState } from "react";
-import CBreadcrumbs from "../../../components/CElements/CBreadcrumbs";
-import CTable from "../../../components/CElements/CTable";
-import AddButton from "../../../components/UI/Buttons/AddButton";
-import { FilterFunctions } from "../../../components/UI/Filter/Logic";
-import { Header } from "../../../components/UI/Header";
+import CBreadcrumbs from "../../components/CElements/CBreadcrumbs";
+import CTable from "../../components/CElements/CTable";
+import AddButton from "../../components/UI/Buttons/AddButton";
+import { FilterFunctions } from "../../components/UI/Filter/Logic";
+import { Header } from "../../components/UI/Header";
 import { breadCrumbItems } from "./Logic";
 
-const DriverNews = () => {
+const DriveRequest = () => {
   const [filterParams, setFilterParams]: any = useState({});
   const { collectFilter, storeFilters } = FilterFunctions({
     store: true,
@@ -37,7 +37,7 @@ const DriverNews = () => {
         }
       >
         <div>
-          <AddButton text="Haydovchi yangiliklari qo'shish" />
+          <AddButton text="Yangi buyurtma" />
         </div>
       </Header>
 
@@ -56,4 +56,4 @@ const DriverNews = () => {
     </>
   );
 };
-export default DriverNews;
+export default DriveRequest;

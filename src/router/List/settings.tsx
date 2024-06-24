@@ -2,14 +2,14 @@
 // const Login = lazy(() => import("../../views/Auth/Login"));
 
 export const settingList = [
-  {
-    parent: "settings",
-    link: "test",
-    sidebar: true,
-    title: "Test",
-    icon: "price_control",
-    element: "test"
-  },
+  // {
+  //   parent: "settings",
+  //   link: "test",
+  //   sidebar: true,
+  //   title: "Test",
+  //   icon: "price_control",
+  //   element: "test"
+  // },
   {
     parent: "settings",
     link: "additional_functions",

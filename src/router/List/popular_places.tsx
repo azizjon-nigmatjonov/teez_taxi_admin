@@ -1,5 +1,5 @@
 import { lazy } from "react";
-const DriverListPage = lazy(() => import("../../views/Driver/List"));
+const PopularPlaces = lazy(() => import("../../views/PopularPlaces"));
 
 export const popularPlaceslist = [
   {
@@ -8,6 +8,6 @@ export const popularPlaceslist = [
     sidebar: true,
     title: "mashhur joylar joylashuvi",
     icon: "location",
-    element: <DriverListPage />,
+    element: <PopularPlaces />,
   },
 ];

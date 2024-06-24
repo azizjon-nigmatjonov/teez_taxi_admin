@@ -7,24 +7,25 @@
       justify-content: space-between !important;
     }
   }
-  
-  .MuiPaper-root {
-    &::-webkit-scrollbar {
-      display: block !important;
-    }
-    .MuiList-root {
-      &::-webkit-scrollbar {
-        display: block !important;
-      }
-    }
-  }  
+
+  // .MuiPaper-root {
+  //   overflow: auto;
+  //   &::-webkit-scrollbar {
+  //     display: block !important;
+  //   }
+  //   .MuiList-root {
+  //     &::-webkit-scrollbar {
+  //       display: block !important;
+  //     }
+  //   }
+  // }
 }
 
 .CTableContainer {
   width: 100%;
   .table {
+
     width: 100%;
-    // border-radius: $lg;
     position: relative;
     color: var(--black);
     background-color: white;

@@ -67,9 +67,7 @@ const CPagination = ({
 
   return (
     <div className="table__pagination  flex items-center justify-between border-t border-lightGray px-3">
-      <p className="text-[var(--gray)]">
-        {totalCount} tadan 1-{dataLength} tasi
-      </p>
+      <div></div>
       <Pagination
         onChange={(e, val) => {
           console.log("e pagination", e);

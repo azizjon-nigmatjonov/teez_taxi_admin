@@ -66,7 +66,11 @@ export const CTableHeadCell = ({
   id: any;
   style: any;
 }) => {
-  return <th {...props} className="sticky">{children}</th>;
+  return (
+    <th {...props} className="sticky">
+      {children}
+    </th>
+  );
 };
 
 export const CTableBody = ({
@@ -131,3 +135,4 @@ export const CTableCell = ({
     </td>
   );
 };
+

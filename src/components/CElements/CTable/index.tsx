@@ -8,6 +8,7 @@ import {
   CTableRow,
   CTableBody,
 } from "./Details";
+import { HeaderSettings } from "./Details/TableSettings";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import TabbleActions from "./Details/Actions";
@@ -19,7 +20,7 @@ import { TableDelete } from "./Details/Actions/EditDelete";
 import { PopoverDelete } from "./Details/Actions/EditDelete/PopOver";
 import { usePermissions } from "../../../hooks/usePermissions";
 import CPagination from "./Details/Pagination";
-import { TableData } from "./Logic";
+// import { TableData } from "./Logic";
 // import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 // import CustomScrollbar from "./ScrollComponent";
 
@@ -70,20 +71,21 @@ const CTable = ({
   const dispatch = useDispatch();
   const { routePermissions, checkPermission } = usePermissions();
   const tableRef: any = useRef(null);
-  const [buttonPosition, setButtonPosition] = useState(10);
-  const draggingRef = useRef(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const collapsed = useSelector((state: any) => state.sidebar.collapsed);
-  const [showScroll, setShowScroll] = useState(true);
-  const { handleMouseDown } = TableData({
-    tableRef,
-    collapsed,
-    scrollPosition,
-    draggingRef,
-    setScrollPosition,
-    setButtonPosition,
-    setShowScroll,
-  });
+  // const [buttonPosition, setButtonPosition] = useState(10);
+  // const draggingRef = useRef(false);
+  // const [scrollPosition, setScrollPosition] = useState(0);
+  // const collapsed = useSelector((state: any) => state.sidebar.collapsed);
+  // const [showScroll, setShowScroll] = useState(true);
+  // const [tablePosition, setTablePosition] = useState({ top: 140, left: 0 });
+  // const { handleMouseDown } = TableData({
+  //   tableRef,
+  //   collapsed,
+  //   scrollPosition,
+  //   draggingRef,
+  //   setScrollPosition,
+  //   setButtonPosition,
+  //   setShowScroll,
+  // });
 
   useEffect(() => {
     const tableEl = document.getElementById("table");
@@ -284,30 +286,44 @@ const CTable = ({
     handleActions(el, status);
   };
 
+  // useEffect(() => {
+  //   if (tableRef.current) {
+  //     const rect = tableRef.current.getBoundingClientRect();
+  //     setTablePosition({
+  //       top: rect.top - 40,
+  //       left: rect.left,
+  //     });
+  //   }
+  // }, [collapsed, tableRef]);
+
   return (
     <div className="relative">
-      <div
-        className={`border border-[var(--gray20)] common-shadow rounded-[18px] overflow-hidden bg-white relative z-[2] ${
-          showScroll ? "pt-[34px]" : ""
-        }`}
+      {/* <div
+        className="sticky z-[90] bg-red-500 left-0"
+        style={{ top: `${tablePosition?.top || 0}px` }}
       >
-        {showScroll && (
-          <button
-            onMouseDown={handleMouseDown}
-            style={{
-              position: "absolute",
-              left: buttonPosition,
-              cursor: "pointer",
-              zIndex: "1",
-            }}
-            className={`w-[30%] top-[8px] h-[18px] px-4 bg-[var(--gray30)] rounded-[8px] justify-between flex items-center space-x-1 border border-[var(--gray20)]`}
-          ></button>
-        )}
+        <div className="relative w-full">
+          {showScroll && (
+            <button
+              onMouseDown={handleMouseDown}
+              style={{
+                position: "absolute",
+                left: buttonPosition,
+                cursor: "pointer",
+                zIndex: "1",
+              }}
+              className={`w-[30%] top-[10px] h-[12px] px-4 bg-[var(--gray30)] rounded-[8px] justify-between flex items-center space-x-1 border border-[var(--gray20)]`}
+            ></button>
+          )}
+        </div>
+      </div> */}
+      <div
+        className={`border border-[var(--gray20)] common-shadow rounded-[18px] overflow-hidden bg-white`}
+      >
+        <HeaderSettings totalCount={totalCount} len={bodyColumns?.length} />
         <div
           id="table"
-          className={`overflow-x-scroll remove-scroll ${
-            showScroll ? "border-t border-[var(--gray20)]" : ""
-          }`}
+          className={`overflow-x-scroll designed-scroll border-t border-[var(--gray20)]`}
           ref={tableRef}
         >
           <div className="wrapper">

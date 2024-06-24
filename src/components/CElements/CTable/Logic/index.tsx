@@ -39,9 +39,11 @@ export const TableData = ({
       }
       if (newButtonPosition + position > tableRef.current.offsetWidth) {
         newButtonPosition = newButtonPosition;
+
       }
-      setScrollPosition(newButtonPosition);
+
       setButtonPosition(newButtonPosition);
+      setScrollPosition(newButtonPosition);
     }
   };
 
@@ -69,14 +71,15 @@ export const TableData = ({
     const checkOverflow = () => {
       setShowScroll(true)
       if (tableRef.current && tableRef.current) {
-
-        // setShowScroll(
-        //   tableRef.current.scrollWidth > tableRef.current.clientWidth
-        // );
+        setShowScroll(
+          tableRef.current.scrollWidth > tableRef.current.clientWidth
+        );
       }
     };
-    checkOverflow();
-  }, []);
+    setTimeout(() => {
+      checkOverflow();
+    }, 1000);
+  }, [collapsed]);
 
   return { handleMouseDown };
 };
