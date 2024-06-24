@@ -11,7 +11,7 @@ import HFSelect from "../../../components/HFElements/HFSelect";
 
 const NewOrder = () => {
   const schema = Validation();
-  const { control, setValue, handleSubmit, reset } = useForm({
+  const { control, setValue, handleSubmit } = useForm({
     mode: "onSubmit",
     resolver: yupResolver(schema),
   });

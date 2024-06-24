@@ -5,5 +5,9 @@ export const routeParents = {
   region: [],
   service: [],
   driver: [],
+  driver_request: [],
+  pages: [],
+  popular_places: [],
+  driver_place: [],
   settings: [],
 };

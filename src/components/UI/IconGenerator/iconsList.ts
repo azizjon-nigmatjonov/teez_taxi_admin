@@ -7,6 +7,12 @@ import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
 import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
 import HistoryToggleOffIcon from '@mui/icons-material/HistoryToggleOff';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import DescriptionIcon from '@mui/icons-material/Description';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import MapIcon from '@mui/icons-material/Map';
 
 export const iconsList = [
   {
@@ -48,6 +54,30 @@ export const iconsList = [
   {
     name: "income",
     component: MonetizationOnIcon,
+  },
+  {
+    name: "car",
+    component: AirportShuttleIcon
+  },
+  {
+    name: "page",
+    component: AutoStoriesIcon
+  },
+  {
+    name: "description",
+    component: DescriptionIcon
+  },
+  {
+    name: "lock",
+    component: LockOpenIcon
+  },
+  {
+    name: "location",
+    component: LocationOnIcon
+  },
+  {
+    name: "map",
+    component: MapIcon
   },
   {
     name: "price_control",

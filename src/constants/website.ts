@@ -61,4 +61,4 @@ export const ColorConstants = {
 } as const;
 
 
-export const projectName = "Teez taxi"
+export const projectName = "Project"
