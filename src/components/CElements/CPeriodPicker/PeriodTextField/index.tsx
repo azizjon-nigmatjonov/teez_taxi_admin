@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { TextField } from "@mui/material";
 import "../style.scss";
-import { IoMdArrowDropdown } from "react-icons/io";
+// import { IoMdArrowDropdown } from "react-icons/io";
 import { ArrowDownOutline } from "../../../../components/UI/IconGenerator/Svg";
 
 interface Props {
@@ -34,7 +34,7 @@ export const PeriodTextField = memo(
             placeholder={placeholder}
             InputProps={{
               readOnly: true,
-              endAdornment: <IoMdArrowDropdown size={18} />,
+              // endAdornment: <IoMdArrowDropdown size={18} />,
             }}
             onClick={() => handleDropdown()}
             style={{

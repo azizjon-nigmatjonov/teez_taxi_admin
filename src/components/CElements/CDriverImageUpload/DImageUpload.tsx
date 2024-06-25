@@ -36,7 +36,6 @@ export const DImageUploadUI = ({
   text = "",
   readOnly = false,
   label = "",
-  style,
   zoomImg = false,
   required = false,
   onChange = () => {},

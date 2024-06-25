@@ -1,0 +1,1 @@
+import{j as s}from"./index-BzEcO3C8.js";import{H as r,C as e}from"./index-B3EVSczO.js";const t=[{label:"Viloyat qo'shish",link:"/region/add"}],o=()=>s.jsx(s.Fragment,{children:s.jsxs(r,{sticky:!0,children:[s.jsx(e,{items:t,progmatic:!0}),s.jsx("div",{className:"ml-5"})]})});export{o as default};

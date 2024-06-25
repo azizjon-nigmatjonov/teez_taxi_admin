@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { LinearSortIcon } from "../IconGenerator/Svg";
-import { BiX } from "react-icons/bi";
+// import { BiX } from "react-icons/bi";
 import { t } from "i18next";
 import { ReactNode } from "react";
 import Filters from "./Filter";
@@ -37,7 +37,8 @@ const FilterButton = ({ text = "", open, openFilter, left, children, ...props }:
           <div className="icon">
             <div>
               {open ? (
-                <BiX color="#993701" size={16} />
+                ""
+                // <BiX color="#993701" size={16} />
               ) : (
                 <LinearSortIcon />
               )}
