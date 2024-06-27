@@ -16,9 +16,9 @@ import MapIcon from '@mui/icons-material/Map';
 import SettingsIcon from "@mui/icons-material/Settings";
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { DriverIcon } from "./Svg";
-import PendingIcon from '@mui/icons-material/Pending';
 import GroupIcon from '@mui/icons-material/Group';
 import ModeOfTravelIcon from '@mui/icons-material/ModeOfTravel';
+import HistoryIcon from '@mui/icons-material/History';
 
 export const iconsList = [
   {
@@ -106,11 +106,11 @@ export const iconsList = [
     component: GroupIcon
   },
   {
-    name: "pending",
-    component: PendingIcon
-  },
-  {
     name: "trips",
     component: ModeOfTravelIcon
+  },
+  {
+    name: "history_clock",
+    component: HistoryIcon
   }
 ];

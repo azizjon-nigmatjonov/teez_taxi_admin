@@ -1,6 +1,7 @@
 import CBreadcrumbs from "../../components/CElements/CBreadcrumbs";
 import CCard from "../../components/CElements/CCard";
 import CTable from "../../components/CElements/CTable";
+import { BarChartUI } from "../../components/UI/Charts/BarChart";
 import { Header } from "../../components/UI/Header";
 import { DashboardCard } from "./CardUI";
 import { FetchFunction, TableData, breadCrumbItems } from "./Logic";
@@ -33,7 +34,9 @@ const Dashboard = () => {
           />
         </CCard>
 
-        <CCard title="Daromad"></CCard>
+        <CCard title="Daromad">
+          <BarChartUI />
+        </CCard>
       </div>
     </>
   );

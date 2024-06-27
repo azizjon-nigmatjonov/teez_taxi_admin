@@ -1,5 +1,6 @@
 import CCard from "../../../components/CElements/CCard";
 import IconGenerator from "../../../components/UI/IconGenerator";
+import { formatNumberWithSpaces } from "../../../utils/formatMoney";
 
 interface Props {
   data: any;
@@ -14,7 +15,7 @@ const CardList = [
   {
     title: "Tasdiqlanish kutilmoqda",
     id: "pending_driver",
-    icon: "pending",
+    icon: "history_clock",
   },
   {
     title: "Jami yo'lovchilar",
@@ -53,7 +54,9 @@ export const DashboardCard = ({ data = {} }: Props) => {
           <div className="flex items-center space-x-5">
             <IconGenerator icon={item.icon} />
             <div>
-              <span className="text-xl font-medium">{data[item.id]}</span>
+              <span className="text-xl font-medium">
+                {formatNumberWithSpaces(data[item.id] || 0)}
+              </span>
               <p className="text-[var(--gray60)] mt-1">{item.title}</p>
             </div>
           </div>
