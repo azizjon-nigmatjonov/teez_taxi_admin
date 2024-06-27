@@ -52,7 +52,7 @@ export const TableData = () => {
 
 export const FetchFunction = () => {
   const { data, isLoading } = useCQuery({
-    key: `GET_PASSENGERS_NEWS`,
+    key: `GET_DRIVER_LIST`,
     endpoint: `/driver-list`,
     params: {
       // page: 1,

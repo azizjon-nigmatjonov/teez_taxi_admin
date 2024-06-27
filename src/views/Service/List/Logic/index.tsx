@@ -40,7 +40,7 @@ export const TableData = () => {
 
 export const FetchFunction = () => {
   const { data, isLoading } = useCQuery({
-    key: `GET_PASSENGERS_NEWS`,
+    key: `GET_SERVICE_LIST`,
     endpoint: `/service-list`,
     params: {
       // page: 1,
