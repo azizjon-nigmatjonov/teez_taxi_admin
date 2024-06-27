@@ -31,8 +31,8 @@ export const Header = ({
         {...props}
         style={{ width: `calc(100vw - ${collapsed ? "70px" : "280px"})` }}
       >
-        <div>{extra}</div>
-        <div className="flex items-center">
+        {extra && <div>{extra}</div>}
+        <div className="flex items-center justify-between w-full">
           {children ? (
             children
           ) : (

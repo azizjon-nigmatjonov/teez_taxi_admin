@@ -34,7 +34,7 @@ interface routeType {
 const Router = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state: any) => state.auth.user);
-  // const token = useSelector((state: any) => state.auth.token);
+  const token = useSelector((state: any) => state.auth.token);
   const [list, setList] = useState<string[]>([]);
   const [listNew, setListNew] = useState<string[]>([]);
   const storedRoutes = useSelector((state: any) => state.website.routes);
@@ -109,7 +109,7 @@ const Router = () => {
     dispatch(websiteActions.setNewRoutes({ ...newRoutes }));
   }, []);
 
-  if (1 !== 1) {
+  if (!token) {
     return (
       <Suspense fallback={"Loading..."}>
         <Routes>

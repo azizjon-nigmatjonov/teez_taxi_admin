@@ -13,7 +13,7 @@ export const { actions: authActions, reducer: authReducer } = createSlice({
       state.user = payload;
     },
     login: (state, { payload }) => {
-      state.token = payload?.accessToken ?? ""
+      state.token = payload?.access_token ?? "";
     },
     logout: () => initialState,
   },

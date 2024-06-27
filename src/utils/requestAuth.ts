@@ -63,16 +63,16 @@ const errorHandler = (error: any) => {
 
 requestAuth.interceptors.request.use(
   (config: any) => {
-    const token = "";
-    config.headers[`x-device-type`] = "web";
-    config.headers[`x-app-lang`] = "uz";
-    config.headers[`x-device-model`] = "Safari | web";
-    config.headers[`x-app-version`] = "0.0.1";
-    config.headers[`x-app-build`] = 1;
-    config.headers[`x-device-uid`] = 123456;
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    // const token = "";
+    // config.headers[`x-device-type`] = "web";
+    // config.headers[`x-app-lang`] = "uz";
+    // config.headers[`x-device-model`] = "Safari | web";
+    // config.headers[`x-app-version`] = "0.0.1";
+    // config.headers[`x-app-build`] = 1;
+    // config.headers[`x-device-uid`] = 123456;
+    // if (token) {
+    //   config.headers.Authorization = `Bearer ${token}`;
+    // }
     return config;
   },
 
