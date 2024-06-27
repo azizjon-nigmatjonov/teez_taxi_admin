@@ -3,28 +3,33 @@ import CCard from "../../components/CElements/CCard";
 import CTable from "../../components/CElements/CTable";
 import { Header } from "../../components/UI/Header";
 import { DashboardCard } from "./CardUI";
-import { breadCrumbs } from "./Logic";
+import { FetchFunction, TableData, breadCrumbItems } from "./Logic";
 
 const Dashboard = () => {
+  const { headColumns } = TableData();
+  const { bodyData } = FetchFunction();
+  console.log(bodyData);
+
   return (
     <>
       <Header
         sticky={true}
-        extra={<CBreadcrumbs items={breadCrumbs} progmatic={true} />}
+        extra={<CBreadcrumbs items={breadCrumbItems} progmatic={true} />}
       >
         {/* <div className="ml-5"></div> */}
       </Header>
-      <div className="container grid grid-cols-4 gap-5">
-        <DashboardCard />
+      <div className="container">
+        <DashboardCard data={bodyData?.data_informaton?.dashboard} />
       </div>
       <div className="container grid grid-cols-2 gap-x-5 mt-5">
         <CCard title="Oxirgi so'rov">
           <CTable
-            headColumns={[]}
-            bodyColumns={[]}
+            headColumns={headColumns}
+            bodyColumns={bodyData?.recent_riderequest}
             handleFilterParams={() => {}}
             filterParams={{}}
             tableSetting={false}
+            disablePagination={true}
           />
         </CCard>
 

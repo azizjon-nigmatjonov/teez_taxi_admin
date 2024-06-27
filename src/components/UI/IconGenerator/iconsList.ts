@@ -14,6 +14,11 @@ import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MapIcon from '@mui/icons-material/Map';
 import SettingsIcon from "@mui/icons-material/Settings";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { DriverIcon } from "./Svg";
+import PendingIcon from '@mui/icons-material/Pending';
+import GroupIcon from '@mui/icons-material/Group';
+import ModeOfTravelIcon from '@mui/icons-material/ModeOfTravel';
 
 export const iconsList = [
   {
@@ -88,4 +93,24 @@ export const iconsList = [
     name: "price_control",
     component: LockIcon,
   },
+  {
+    name: "earn",
+    component: AttachMoneyIcon
+  },
+  {
+    name: "driver",
+    component: DriverIcon
+  },
+  {
+    name: "passengers",
+    component: GroupIcon
+  },
+  {
+    name: "pending",
+    component: PendingIcon
+  },
+  {
+    name: "trips",
+    component: ModeOfTravelIcon
+  }
 ];
