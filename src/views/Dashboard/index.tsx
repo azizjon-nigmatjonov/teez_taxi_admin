@@ -24,6 +24,7 @@ const Dashboard = () => {
             bodyColumns={[]}
             handleFilterParams={() => {}}
             filterParams={{}}
+            tableSetting={false}
           />
         </CCard>
 
