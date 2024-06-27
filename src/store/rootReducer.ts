@@ -8,6 +8,7 @@ import { mqttReducer } from "./mqtt";
 import { notificationReducer } from "./notification";
 import { sidebarReducer } from "./sidebar";
 import { filterReducer } from "./filterParams";
+import { tableReducer } from "./table";
 
 const authPersistConfig = {
   key: "auth",
@@ -21,18 +22,23 @@ const tableSizePersistConfig = {
 
 const notificationPersistConfig = {
   key: "notificationReducer",
-  storage
-}
+  storage,
+};
 
 const sidebarPersistConfig = {
   key: "sidebar",
-  storage
-}
+  storage,
+};
 
 const filterPersistConfig = {
-  key: 'filter',
-  storage
-}
+  key: "filter",
+  storage,
+};
+
+const tablePersistConfig = {
+  key: "table",
+  storage,
+};
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
@@ -40,8 +46,9 @@ const rootReducer = combineReducers({
   notification: persistReducer(notificationPersistConfig, notificationReducer),
   sidebar: persistReducer(sidebarPersistConfig, sidebarReducer),
   filter: persistReducer(filterPersistConfig, filterReducer),
+  table: persistReducer(tablePersistConfig, tableReducer),
   website: websiteReducer,
-  mqtt: mqttReducer
+  mqtt: mqttReducer,
 });
 
 export default rootReducer;

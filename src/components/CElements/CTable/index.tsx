@@ -20,6 +20,7 @@ import { TableDelete } from "./Details/Actions/EditDelete";
 import { PopoverDelete } from "./Details/Actions/EditDelete/PopOver";
 import { usePermissions } from "../../../hooks/usePermissions";
 import CPagination from "./Details/Pagination";
+import { TableSettingsData } from "./Logic";
 // import { TableData } from "./Logic";
 // import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 // import CustomScrollbar from "./ScrollComponent";
@@ -33,10 +34,11 @@ interface Props {
   isLoading?: boolean;
   passRouter?: boolean;
   isResizeble?: boolean;
+  tableSetting?: boolean;
   disablePagination?: boolean;
   autoHeight?: boolean;
   limitCount?: number[];
-  handleFilterParams: (val: number) => void;
+  handleFilterParams: (val: any) => void;
   filterParams: any;
   handleActions?: (val: any, val2?: any) => void;
   idForTable?: string;
@@ -58,6 +60,7 @@ const CTable = ({
   filterParams = { page: 1 },
   handleFilterParams = () => {},
   handleActions = () => {},
+  tableSetting = true,
 }: Props) => {
   const tableSize = useSelector((state: any) => state.tableSize.tableSize);
   const location = useLocation();
@@ -71,6 +74,25 @@ const CTable = ({
   const dispatch = useDispatch();
   const { routePermissions, checkPermission } = usePermissions();
   const tableRef: any = useRef(null);
+  const { handleCheckbox } = TableSettingsData({
+    filterParams,
+    handleFilterParams,
+  });
+  const storedColumns = useSelector((state: any) => state.table.columns);
+
+  const pageName: any = useMemo(() => {
+    const strLen =
+      location.pathname.split("/")[2].length +
+      location.pathname.split("/")[1].length;
+
+    let result = location.pathname.substring(0, strLen + 2);
+
+    if (idForTable) result = result + "/" + idForTable;
+    return result;
+  }, [location, idForTable]);
+
+  const pageColumns = storedColumns[pageName];
+
   // const [buttonPosition, setButtonPosition] = useState(10);
   // const draggingRef = useRef(false);
   // const [scrollPosition, setScrollPosition] = useState(0);
@@ -86,6 +108,22 @@ const CTable = ({
   //   setButtonPosition,
   //   setShowScroll,
   // });
+
+  const newHeadColumns: any = useMemo(() => {
+    if (!tableSetting) return headColumns;
+    const data: any = [];
+    const arr = pageColumns ?? [];
+
+    headColumns?.forEach((el: { id: string }) => {
+      let id: any = el.id;
+      if (id?.[0] && typeof id === "object") {
+        id = id.join("");
+      }
+      if (arr.includes(id)) data.push(el);
+    });
+
+    return data;
+  }, [pageColumns, headColumns, pageName, tableSetting]);
 
   useEffect(() => {
     const tableEl = document.getElementById("table");
@@ -130,17 +168,6 @@ const CTable = ({
       })) ?? []
     );
   }, [bodyColumns, currentLimit, filterParams?.page, headColumns]);
-
-  const pageName: any = useMemo(() => {
-    const strLen =
-      location.pathname.split("/")[2].length +
-      location.pathname.split("/")[1].length;
-
-    let result = location.pathname.substring(0, strLen + 2);
-
-    if (idForTable) result = result + "/" + idForTable;
-    return result;
-  }, [location, idForTable]);
 
   useEffect(() => {
     if (!isResizeble) return;
@@ -281,6 +308,10 @@ const CTable = ({
       return;
     }
 
+    if (status === "multiple") {
+      handleCheckbox(el.id);
+    }
+
     if (!checkPermission(status) || el.empty) return;
 
     handleActions(el, status);
@@ -317,13 +348,25 @@ const CTable = ({
           )}
         </div>
       </div> */}
-      <div
-        className={`border border-[var(--gray20)] common-shadow rounded-[18px] overflow-hidden bg-white`}
-      >
-        <HeaderSettings totalCount={totalCount} len={bodyColumns?.length} />
+      <div className="border border-[var(--gray20)] common-shadow rounded-[18px] overflow-hidden bg-white">
+        {tableSetting ? (
+          <HeaderSettings
+            totalCount={totalCount}
+            len={bodyColumns?.length}
+            filterParams={filterParams}
+            tableActions={tableActions}
+            pageName={pageName}
+            headColumns={headColumns}
+            pageColumns={pageColumns}
+          />
+        ) : (
+          ""
+        )}
         <div
           id="table"
-          className={`overflow-x-scroll designed-scroll border-t border-[var(--gray20)]`}
+          className={`overflow-x-scroll designed-scroll ${
+            tableSetting ? "border-t border-[var(--gray20)]" : ""
+          }`}
           ref={tableRef}
         >
           <div className="wrapper">
@@ -343,7 +386,7 @@ const CTable = ({
             >
               <CTableHead>
                 <CTableRow className="">
-                  {headColumns?.map((column, index) => (
+                  {newHeadColumns?.map((column: any, index: number) => (
                     <CTableHeadCell
                       id={column.id}
                       key={
@@ -418,7 +461,7 @@ const CTable = ({
 
               <CTableBody
                 loader={isLoading}
-                columnscount={headColumns?.length}
+                columnscount={newHeadColumns?.length}
                 rowsCount={currentLimit}
                 dataLength={bodySource?.length}
               >
@@ -433,7 +476,7 @@ const CTable = ({
                             : ""
                         }
                       >
-                        {headColumns.map((column, colIndex) => (
+                        {newHeadColumns.map((column: any, colIndex: number) => (
                           <CTableCell
                             key={colIndex}
                             className={`overflow-ellipsis ${tableHeight}`}
@@ -511,9 +554,7 @@ const CTable = ({
                                 ""
                               )}
 
-                              {column.id === "actions" &&
-                              !item.empty &&
-                              routePermissions?.length ? (
+                              {column.id === "actions" && !item.empty ? (
                                 <div className="relative">
                                   {column?.actions?.length <= 2 ? (
                                     <div>
@@ -521,6 +562,7 @@ const CTable = ({
                                         element={item}
                                         tableActions={tableActions}
                                         actions={column.actions}
+                                        filterParams={filterParams}
                                         checkPermission={checkPermission}
                                       />
                                       {currDelete.index === item.index ? (

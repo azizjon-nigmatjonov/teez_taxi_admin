@@ -40,7 +40,7 @@ export const PopoverDelete = ({
           </button>
         </div>
       </div>
-      <Closer handleClose={() => closePopover("")} />
+      <Closer handleClose={() => closePopover("")} classes="z-[97]" />
     </>
   );
 };

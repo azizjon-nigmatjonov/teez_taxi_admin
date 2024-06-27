@@ -8,9 +8,11 @@ import { breadCrumbs } from "./Logic";
 const Dashboard = () => {
   return (
     <>
-      <Header sticky={true}>
-        <CBreadcrumbs items={breadCrumbs} progmatic={true} />
-        <div className="ml-5"></div>
+      <Header
+        sticky={true}
+        extra={<CBreadcrumbs items={breadCrumbs} progmatic={true} />}
+      >
+        {/* <div className="ml-5"></div> */}
       </Header>
       <div className="container grid grid-cols-4 gap-5">
         <DashboardCard />
@@ -22,7 +24,6 @@ const Dashboard = () => {
             bodyColumns={[]}
             handleFilterParams={() => {}}
             filterParams={{}}
-          
           />
         </CCard>
 

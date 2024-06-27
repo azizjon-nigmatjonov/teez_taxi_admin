@@ -22,10 +22,10 @@ const NewOrder = () => {
 
   return (
     <>
-      <Header sticky={true}>
-        <CBreadcrumbs items={breadCrumbs} progmatic={true} />
-        <div className="ml-5"></div>
-      </Header>
+      <Header
+        sticky={true}
+        extra={<CBreadcrumbs items={breadCrumbs} progmatic={true} />}
+      ></Header>
 
       <form onSubmit={handleSubmit(onSubmit)} className="container">
         <CCard

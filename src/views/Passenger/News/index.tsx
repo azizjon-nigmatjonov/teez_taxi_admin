@@ -4,7 +4,7 @@ import CTable from "../../../components/CElements/CTable";
 import AddButton from "../../../components/UI/Buttons/AddButton";
 import { FilterFunctions } from "../../../components/UI/Filter/Logic";
 import { Header } from "../../../components/UI/Header";
-import { breadCrumbItems } from "./Logic";
+import { FetchFunction, TableData, breadCrumbItems } from "./Logic";
 
 const PassengerNews = () => {
   const [filterParams, setFilterParams]: any = useState({});
@@ -13,6 +13,8 @@ const PassengerNews = () => {
     filterParams,
     setFilterParams,
   });
+  const { headColumns } = TableData()
+  const { bodyData, isLoading } = FetchFunction()
 
   const handleFilterParams = (obj: any) => {
     setFilterParams(obj);
@@ -43,11 +45,11 @@ const PassengerNews = () => {
 
       <div className="container">
         <CTable
-          headColumns={[]}
-          bodyColumns={[]}
+          headColumns={headColumns}
+          bodyColumns={bodyData}
           totalCount={1}
           count={1}
-          isLoading={false}
+          isLoading={isLoading}
           filterParams={filterParams}
           handleFilterParams={handleFilterParams}
           clickable={true}

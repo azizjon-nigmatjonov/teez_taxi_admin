@@ -1,6 +1,10 @@
 .CBreadcrumbs-wrapper {
   display: flex;
   align-items: center;
+
+  .MuiBreadcrumbs-ol {
+    flex-wrap: nowrap;
+  }
 }
 .CBreadcrumbs {  
   .breadcrumb-item {

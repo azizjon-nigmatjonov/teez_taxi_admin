@@ -39,7 +39,6 @@ export const TableData = ({
       }
       if (newButtonPosition + position > tableRef.current.offsetWidth) {
         newButtonPosition = newButtonPosition;
-
       }
 
       setButtonPosition(newButtonPosition);
@@ -69,7 +68,7 @@ export const TableData = ({
 
   useEffect(() => {
     const checkOverflow = () => {
-      setShowScroll(true)
+      setShowScroll(true);
       if (tableRef.current && tableRef.current) {
         setShowScroll(
           tableRef.current.scrollWidth > tableRef.current.clientWidth
@@ -82,4 +81,24 @@ export const TableData = ({
   }, [collapsed]);
 
   return { handleMouseDown };
+};
+
+export const TableSettingsData = ({
+  filterParams = {},
+  handleFilterParams = () => {},
+}: {
+  filterParams: any;
+  handleFilterParams: (val: any) => void;
+}) => {
+  const handleCheckbox = (id: number | string) => {
+    let arr = filterParams?.multiple_ids || [];
+    if (arr.includes(id)) {
+      arr = arr.filter((prevId: number | string) => prevId !== id);
+    } else {
+      arr = [...arr, id];
+    }
+    handleFilterParams({ ...filterParams, multiple_ids: arr });
+  };
+
+  return { handleCheckbox };
 };

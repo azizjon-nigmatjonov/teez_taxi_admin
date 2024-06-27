@@ -4,24 +4,26 @@ import {
   Visibility,
 } from "@mui/icons-material";
 import cls from "./style.module.scss";
+import CCheckbox from "../../../../../CElements/CCheckbox";
 
 interface Props {
   actions: string[];
   element: any;
   checkPermission: any;
+  filterParams: any;
   tableActions: (val: any, val2: any) => void;
 }
 
 export const TableDelete = ({
   element,
+  filterParams = {},
   tableActions = () => {},
   actions = [],
   checkPermission = [],
 }: Props) => {
   const handleActions = (status: string, element: any) => {
-  
     if (checkPermission(status)) {
-      const newStatus = status === "delete" ? "delete_by" : status
+      const newStatus = status === "delete" ? "delete_by" : status;
       tableActions(element, newStatus);
     }
   };
@@ -62,6 +64,17 @@ export const TableDelete = ({
           onClick={() => handleActions("view", element)}
         >
           <Visibility style={{ color: "var(--gray90)" }} />
+        </div>
+      ) : (
+        ""
+      )}
+
+      {filterParams?.settings?.multiple ? (
+        <div>
+          <CCheckbox
+            checked={filterParams?.multiple_ids?.includes(element.id)}
+            handleCheck={() => tableActions(element, "multiple")}
+          />
         </div>
       ) : (
         ""
