@@ -32,7 +32,7 @@ const SettingDropdown = ({
 
 export const HeaderSettings = ({
   totalCount,
-  len,
+  len = 0,
   filterParams,
   tableActions,
   pageName,

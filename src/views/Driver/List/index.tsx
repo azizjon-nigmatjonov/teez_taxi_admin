@@ -1,23 +1,20 @@
-import { useState } from "react";
 import CBreadcrumbs from "../../../components/CElements/CBreadcrumbs";
 import CTable from "../../../components/CElements/CTable";
 import AddButton from "../../../components/UI/Buttons/AddButton";
-import { FilterFunctions } from "../../../components/UI/Filter/Logic";
+import { FilterFunctions, getStoredFilters } from "../../../components/UI/Filter/Logic";
 import { Header } from "../../../components/UI/Header";
 import { FetchFunction, TableData, breadCrumbItems } from "./Logic";
 
 const DriverList = () => {
-  const [filterParams, setFilterParams]: any = useState({});
+  const { filterParams } = getStoredFilters({});
   const { collectFilter, storeFilters } = FilterFunctions({
     store: true,
     filterParams,
-    setFilterParams,
   });
   const { headColumns } = TableData()
   const { bodyData, isLoading } = FetchFunction()
 
   const handleFilterParams = (obj: any) => {
-    setFilterParams(obj);
     storeFilters(obj);
   };
 
@@ -47,8 +44,7 @@ const DriverList = () => {
         <CTable
           headColumns={headColumns}
           bodyColumns={bodyData}
-          totalCount={1}
-          count={1}
+         meta={bodyData?.meta}
           isLoading={isLoading}
           filterParams={filterParams}
           handleFilterParams={handleFilterParams}
