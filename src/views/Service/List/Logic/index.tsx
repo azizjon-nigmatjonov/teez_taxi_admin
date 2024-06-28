@@ -43,9 +43,9 @@ export const FetchFunction = () => {
     key: `GET_SERVICE_LIST`,
     endpoint: `/service-list`,
     params: {
-      // page: 1,
+      page: 1,
     },
   });
 
-  return { bodyData: data?.data ?? [], isLoading };
+  return { bodyData: data ?? {}, isLoading };
 };
