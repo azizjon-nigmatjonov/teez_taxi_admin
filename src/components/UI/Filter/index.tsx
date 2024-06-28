@@ -22,13 +22,11 @@ const Filters = ({
   minWidth = "360px",
   filterParams = {},
   setOpen = () => {},
-  setFilterParams = () => {},
 }: Props) => {
   const [clear, setClear] = useState(true);
   const { handleSaveFilter, clearFilter } = FilterData({
     setClear,
     filterParams,
-    setFilterParams,
   });
 
   const closeFilter = () => {

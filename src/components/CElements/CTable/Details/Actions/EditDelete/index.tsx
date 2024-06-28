@@ -4,7 +4,7 @@ import {
   Visibility,
 } from "@mui/icons-material";
 import cls from "./style.module.scss";
-import CCheckbox from "../../../../../CElements/CCheckbox";
+// import CCheckbox from "../../../../../CElements/CCheckbox";
 
 interface Props {
   actions: string[];
@@ -71,10 +71,10 @@ export const TableDelete = ({
 
       {filterParams?.settings?.multiple ? (
         <div>
-          <CCheckbox
+          {/* <CCheckbox
             checked={filterParams?.multiple_ids?.includes(element.id)}
             handleCheck={() => tableActions(element, "multiple")}
-          />
+          /> */}
         </div>
       ) : (
         ""
