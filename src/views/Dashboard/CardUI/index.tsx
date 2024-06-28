@@ -1,9 +1,11 @@
 import CCard from "../../../components/CElements/CCard";
+import { ListSkeleton } from "../../../components/CElements/CSkeleton/ListSkeleton";
 import IconGenerator from "../../../components/UI/IconGenerator";
 import { formatNumberWithSpaces } from "../../../utils/formatMoney";
 
 interface Props {
   data: any;
+  isLoading: boolean;
 }
 
 const CardList = [
@@ -23,6 +25,11 @@ const CardList = [
     icon: "passengers",
   },
   {
+    title: "Jami yurish",
+    id: "total_ride",
+    icon: "trips",
+  },
+  {
     title: "Bugungi daromad",
     id: "today_earning",
     icon: "earn",
@@ -39,13 +46,20 @@ const CardList = [
   },
   {
     title: "Bugungi yurish",
-    id: "total_ride",
+    id: "total_ride_today",
     icon: "trips",
   },
 ];
 
-export const DashboardCard = ({ data = {} }: Props) => {
-  console.log("data", data);
+export const DashboardCard = ({ data = {}, isLoading = false }: Props) => {
+  if (isLoading) {
+    return (
+      <div className="space-y-5">
+        <ListSkeleton height={84} />
+        <ListSkeleton height={84} />
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-4 gap-5">

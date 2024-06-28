@@ -8,8 +8,7 @@ import { FetchFunction, TableData, breadCrumbItems } from "./Logic";
 
 const Dashboard = () => {
   const { headColumns } = TableData();
-  const { bodyData } = FetchFunction();
-  console.log(bodyData);
+  const { bodyData, isLoading } = FetchFunction();
 
   return (
     <>
@@ -20,7 +19,7 @@ const Dashboard = () => {
         {/* <div className="ml-5"></div> */}
       </Header>
       <div className="container">
-        <DashboardCard data={bodyData?.data_informaton?.dashboard} />
+        <DashboardCard data={bodyData?.data_informaton?.dashboard} isLoading={isLoading} />
       </div>
       <div className="container grid grid-cols-2 gap-x-5 mt-5">
         <CCard title="Oxirgi so'rov">
@@ -31,11 +30,12 @@ const Dashboard = () => {
             filterParams={{}}
             tableSetting={false}
             disablePagination={true}
+            isLoading={isLoading}
           />
         </CCard>
 
         <CCard title="Daromad">
-          <BarChartUI />
+          <BarChartUI list={bodyData?.data_informaton?.wallet_yearly} isLoading={isLoading} />
         </CCard>
       </div>
     </>
