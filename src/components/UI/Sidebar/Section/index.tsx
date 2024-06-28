@@ -5,7 +5,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { ArrowIcon } from "../../IconGenerator/Svg";
 import cls from "./style.module.scss";
 import { SectionData } from "../Logic";
-import { DropDown } from "./DropDown";
+import { DropDown, OneDropdown } from "./DropDown";
 import { useDispatch } from "react-redux";
 import { filterActions } from "../../../../store/filterParams";
 
@@ -24,6 +24,10 @@ const SidebarSection = ({ list, collapsed = false }: Props) => {
 
   const toggleAccordion = (key: string) => {
     setActiveIndex(activeIndex === key ? "" : key);
+  };
+
+  const clearFilter = () => {
+    dispatch(filterActions.clearFilterData());
   };
 
   const dispatch = useDispatch();
@@ -98,9 +102,7 @@ const SidebarSection = ({ list, collapsed = false }: Props) => {
                                   }`}
                                 >
                                   <p
-                                    onClick={() =>
-                                      dispatch(filterActions.clearFilterData())
-                                    }
+                                    onClick={() => clearFilter()}
                                     className={`${
                                       isLastItem ? "mb-2" : ""
                                     } flex gap-2 capitalize menu_link cursor-pointer text-sm font-medium text-[#151515] `}
@@ -124,9 +126,20 @@ const SidebarSection = ({ list, collapsed = false }: Props) => {
               </div>
             ) : (
               <div
-                className="menus"
-                onClick={() => dispatch(filterActions.clearFilterData())}
+                className="menus group"
+                onClick={() => clearFilter()}
               >
+                 {collapsed ? (
+                  <OneDropdown
+                    title={t(key)}
+                    path={visibleSidebarItems?.[0]?.path}
+                    icon={visibleSidebarItems?.[0]?.icon}
+                    // sidebarCounts={sidebarCounts}
+                    clearFilter={clearFilter}
+                  />
+                ) : (
+                  ""
+                )}
                 <NavLink
                   to={visibleSidebarItems?.[0]?.path}
                   className={`menu_link3 w-full h-[40px] flex items-center capitalize ${

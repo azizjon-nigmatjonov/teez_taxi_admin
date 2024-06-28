@@ -9,9 +9,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { authActions } from "../../store/auth/auth.slice";
 import { useDispatch } from "react-redux";
 import { CircularProgress } from "@mui/material";
+import usePageRouter from "../../hooks/useObjectRouter";
 
 const Login = () => {
   const [password, setPassword] = useState(true);
+  const { navigateTo } = usePageRouter()
   const dispatch = useDispatch();
   const schema = yup.object().shape({
     email: yup
@@ -29,6 +31,7 @@ const Login = () => {
       onSuccess: (value: any) => {
         if (value) {
           dispatch(authActions.login(value));
+          navigateTo('/')
           window.location.reload();
         }
       },

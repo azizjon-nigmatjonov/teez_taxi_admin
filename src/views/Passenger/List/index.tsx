@@ -6,18 +6,18 @@ import {
   getStoredFilters,
 } from "../../../components/UI/Filter/Logic";
 import { Header } from "../../../components/UI/Header";
+import usePageRouter from "../../../hooks/useObjectRouter";
 import { FetchFunction, TableData, breadCrumbItems } from "./Logic";
 
 const PassengerList = () => {
+  const { navigateTo } = usePageRouter();
   const { filterParams } = getStoredFilters({});
   const { collectFilter, storeFilters } = FilterFunctions({
     store: true,
     filterParams: { ...filterParams },
   });
 
-  const { bodyData, isLoading } = FetchFunction({
-    filterParams: { ...filterParams },
-  });
+  const { bodyData, isLoading } = FetchFunction();
   const { headColumns } = TableData();
 
   const handleFilterParams = (obj: any) => {
@@ -42,7 +42,10 @@ const PassengerList = () => {
         }
       >
         <div>
-          <AddButton text="Yo'lovchi qo'shish" />
+          <AddButton
+            text="Yo'lovchi qo'shish"
+            onClick={() => navigateTo("/passenger/list/create")}
+          />
         </div>
       </Header>
 

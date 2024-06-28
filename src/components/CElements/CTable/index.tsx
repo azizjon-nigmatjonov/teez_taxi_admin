@@ -39,7 +39,7 @@ interface Props {
   tableSetting?: boolean;
   disablePagination?: boolean;
   autoHeight?: boolean;
-  limitCount?: number[];
+  limitList?: number[];
   handleFilterParams: (val: any) => void;
   filterParams: any;
   handleActions?: (val: any, val2?: any) => void;
@@ -60,8 +60,8 @@ const CTable = ({
   idForTable,
   disablePagination = false,
   autoHeight = false,
-  limitCount = [10, 30, 50],
-  filterParams = { page: 1 },
+  limitList = [10, 30, 50],
+  filterParams = { page: 1, perPage: 10 },
   handleFilterParams = () => {},
   handleActions = () => {},
   tableSetting = true,
@@ -71,12 +71,11 @@ const CTable = ({
   const tableSettings: Record<string, any> = {};
   const [headColHeight, setHeadColHeight] = useState(45);
   const [tableHeight, setTableHeight] = useState(500);
-  const [currentLimit, setCurrentLimit] = useState(10);
   //   const { currentSort } = useGetQueries();
   const [currentIndex, setCurrentIndex] = useState(null);
   const [currDelete, setCurrDelete] = useState<any>({});
   const dispatch = useDispatch();
-  const { routePermissions, checkPermission } = usePermissions();
+  const { checkPermission } = usePermissions();
   const tableRef: any = useRef(null);
   const { handleCheckbox } = TableSettingsData({
     filterParams,
@@ -142,8 +141,8 @@ const CTable = ({
 
     let list = [];
 
-    if (bodyColumns.length < currentLimit) {
-      for (let i = 0; i < currentLimit; i++) {
+    if (bodyColumns.length < filterParams.perPage) {
+      for (let i = 0; i <  filterParams.perPage; i++) {
         const obj: Record<string, any> = {};
         headColumns.forEach((col) => {
           obj[col.title] = "";
@@ -167,11 +166,13 @@ const CTable = ({
         is_view: checks(item?.view),
         index:
           filterParams?.page > 1
-            ? filterParams?.page * currentLimit - currentLimit + (index + 1)
+            ? filterParams?.page * filterParams.perPage -
+              filterParams.perPage +
+              (index + 1)
             : index + 1,
       })) ?? []
     );
-  }, [bodyColumns, currentLimit, filterParams?.page, headColumns]);
+  }, [bodyColumns, filterParams.perPage, filterParams.page, headColumns]);
 
   useEffect(() => {
     if (!isResizeble) return;
@@ -377,14 +378,12 @@ const CTable = ({
             <CTableWrapper
               count={meta.pageCount}
               totalCount={meta.totalCount}
-              currentLimit={currentLimit}
+              currentLimit={filterParams.perPage}
               loader={isLoading}
               height={tableHeight}
-              limitCount={limitCount}
               passRouter={passRouter}
               filterParams={filterParams}
               handleFilterParams={handleFilterParams}
-              setCurrentLimit={setCurrentLimit}
               disablePagination={disablePagination}
               dataLength={bodyColumns?.length}
             >
@@ -466,7 +465,7 @@ const CTable = ({
               <CTableBody
                 loader={isLoading}
                 columnscount={newHeadColumns?.length}
-                rowsCount={currentLimit}
+                rowsCount={filterParams.perPage}
                 dataLength={bodySource?.length}
               >
                 {bodySource?.length
@@ -622,11 +621,10 @@ const CTable = ({
             filterParams={filterParams}
             count={meta.pageCount}
             totalCount={meta.totalCount}
-            limit={currentLimit}
-            limitCount={limitCount}
+            limit={filterParams.perPage}
+            limitList={limitList}
             passRouter={passRouter}
             handleFilterParams={handleFilterParams}
-            setCurrentLimit={setCurrentLimit}
             dataLength={bodyColumns?.length}
           />
         ) : (

@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import request from "../../utils/request";
 import { createUrl } from "../../utils/createUrl";
 import toast from "react-hot-toast";
+import { getStoredFilters } from "../../components/UI/Filter/Logic";
 
 export const customRequest = async (arg: any, endpoint: any) => {
   const params = arg.queryKey[1];
@@ -15,8 +16,8 @@ export const customRequest = async (arg: any, endpoint: any) => {
     } else {
       throw Error();
     }
-  } catch (error: any) {    
-    toast.error(error.data.error?.message ?? 'Error');
+  } catch (error: any) {
+    toast.error(error.data.error?.message ?? "Error");
     throw Error(error);
   }
 };
@@ -34,6 +35,11 @@ const useCQuery = ({
   endpoint: any;
   options?: any;
 }) => {
+  const { filterParams } = getStoredFilters({});
+  const { page, perPage } = filterParams;
+  params.page = page || 1;
+  params.perPage = perPage || 10;
+
   return useQuery(
     [key, { ...params, id: null }, param],
     (arg) => customRequest(arg, endpoint),

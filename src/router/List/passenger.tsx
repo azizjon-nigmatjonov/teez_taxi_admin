@@ -1,6 +1,9 @@
 import { lazy } from "react";
 const PassengerListPage = lazy(() => import("../../views/Passenger/List"));
 const PassengerNews = lazy(() => import("../../views/Passenger/News"));
+const PassengerInner = lazy(
+  () => import("../../views/Passenger/List/SinglePage")
+);
 
 export const passengerList = [
   {
@@ -18,7 +21,22 @@ export const passengerList = [
     sidebar: true,
     title: "Yo'lovchi Yangiliklari",
     icon: "news",
-    parent_icon: "passenger",
     element: <PassengerNews />,
+  },
+  {
+    parent: "passenger",
+    link: "list/create",
+    sidebar: false,
+    title: "Yo'lovchi qo'shish",
+    icon: "",
+    element: <PassengerInner />,
+  },
+  {
+    parent: "passenger",
+    link: "list/:id",
+    sidebar: false,
+    title: "Yo'lovchi tahrirlash",
+    icon: "",
+    element: <PassengerInner />,
   },
 ];

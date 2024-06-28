@@ -42,14 +42,11 @@ export const TableData = () => {
   return { headColumns };
 };
 
-export const FetchFunction = ({ filterParams = {} }: { filterParams: any }) => {
+export const FetchFunction = () => {
   const { data, isLoading } = useCQuery({
     key: `GET_PASSENGERS_LIST`,
     endpoint: `/rider-list`,
-    params: {
-      page: filterParams.page || 1,
-      perPage: filterParams.parPage || 10
-    },
+    params: {},
   });
 
   return { bodyData: data ?? [], isLoading };
