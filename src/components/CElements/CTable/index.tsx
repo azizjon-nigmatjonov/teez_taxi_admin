@@ -26,8 +26,10 @@ import { TableSettingsData } from "./Logic";
 // import CustomScrollbar from "./ScrollComponent";
 
 interface Props {
-  count?: number;
-  totalCount?: number;
+  meta?: {
+    totalCount: number;
+    pageCount: number;
+  };
   headColumns: any[];
   bodyColumns?: object[] | any;
   clickable?: boolean;
@@ -45,8 +47,10 @@ interface Props {
 }
 
 const CTable = ({
-  count = 1,
-  totalCount,
+  meta = {
+    totalCount: 1,
+    pageCount: 1,
+  },
   headColumns = [],
   bodyColumns = [],
   clickable = false,
@@ -351,7 +355,7 @@ const CTable = ({
       <div className="border border-[var(--gray20)] common-shadow rounded-[18px] overflow-hidden bg-white">
         {tableSetting ? (
           <HeaderSettings
-            totalCount={totalCount}
+            totalCount={meta.totalCount}
             len={bodyColumns?.length}
             filterParams={filterParams}
             tableActions={tableActions}
@@ -371,8 +375,8 @@ const CTable = ({
         >
           <div className="wrapper">
             <CTableWrapper
-              count={count}
-              totalCount={totalCount}
+              count={meta.pageCount}
+              totalCount={meta.totalCount}
               currentLimit={currentLimit}
               loader={isLoading}
               height={tableHeight}
@@ -616,8 +620,8 @@ const CTable = ({
         {bodyColumns?.length && !isLoading && !disablePagination ? (
           <CPagination
             filterParams={filterParams}
-            count={count}
-            totalCount={totalCount}
+            count={meta.pageCount}
+            totalCount={meta.totalCount}
             limit={currentLimit}
             limitCount={limitCount}
             passRouter={passRouter}

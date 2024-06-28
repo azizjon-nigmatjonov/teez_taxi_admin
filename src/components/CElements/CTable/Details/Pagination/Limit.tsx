@@ -3,14 +3,20 @@ import { Popover } from "@mui/material";
 // import { KeyboardArrowDownFilled, KeyboardArrowUp } from "@mui/icons-material";
 import cls from "./style.module.scss";
 
+interface Props {
+  limit: number;
+  limitCount: number
+  handleRouteActions: () => void
+}
+
 export default function PaginationLimits({
   limit,
   limitCount,
-  handleRouteActions = () => {},
-}) {
+  handleRouteActions = (val: any) => void,
+}: Props) {
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClickPopup = (event) => {
+  const handleClickPopup = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -18,7 +24,7 @@ export default function PaginationLimits({
     setAnchorEl(null);
   };
 
-  function handleLimitActions(i) {
+  function handleLimitActions(i: any) {
     handleRouteActions({ limit: i });
     setAnchorEl(null);
   }

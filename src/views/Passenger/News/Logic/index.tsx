@@ -43,5 +43,5 @@ export const FetchFunction = () => {
     },
   });
 
-  return { bodyData: data?.data ?? [], isLoading };
+  return { bodyData: data ?? {}, isLoading };
 };

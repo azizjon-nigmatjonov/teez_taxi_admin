@@ -7,15 +7,9 @@ interface Props {
   idForFilter?: string;
   filterParams?: [];
   setClear: (val: boolean) => void;
-  setFilterParams: (val: any) => void;
 }
 
-export const FilterData = ({
-  idForFilter,
-  filterParams,
-  setClear,
-  setFilterParams,
-}: Props) => {
+export const FilterData = ({ idForFilter, filterParams, setClear }: Props) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const filterDefaults = useSelector((state: any) => state.filter.filter);
@@ -33,7 +27,6 @@ export const FilterData = ({
 
   const defaultValue = useMemo(() => {
     if (filterDefaults[pageName]) {
-      setFilterParams({ ...filterDefaults[pageName] });
       return filterDefaults[pageName];
     }
     return {};
@@ -55,7 +48,7 @@ export const FilterData = ({
         }
       }
     }
-    setFilterParams(params);
+
     setTimeout(() => {
       handleSaveFilter(params);
     }, 0);
@@ -95,19 +88,17 @@ export const getStoredFilters = ({ idForFilter }: { idForFilter?: string }) => {
     return {};
   }, [filterDefaults[pageName], pageName]);
 
-  return { filters };
+  return { filterParams: filters };
 };
 
 export const FilterFunctions = ({
   store = false,
   idForFilter = "",
   filterParams = [],
-  setFilterParams = () => {},
 }: {
   store?: boolean;
   idForFilter?: string;
   filterParams: any;
-  setFilterParams: (val: any) => void;
 }) => {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -130,7 +121,6 @@ export const FilterFunctions = ({
 
   const filters = useMemo(() => {
     if (filterDefaults[pageName]) {
-      setFilterParams({ ...filterDefaults[pageName] });
       return filterDefaults[pageName];
     }
     return {};
@@ -162,11 +152,10 @@ export const FilterFunctions = ({
       obj[type] = val;
     }
 
-    setFilterParams({ ...filterParams, ...obj });
     if (store) {
       storeFilters({ ...filterParams, ...obj });
     }
   };
 
-  return { collectFilter, storeFilters, filters };
+  return { collectFilter, storeFilters, filterParams: filters };
 };

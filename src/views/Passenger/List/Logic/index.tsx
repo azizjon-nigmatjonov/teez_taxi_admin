@@ -14,7 +14,7 @@ export const TableData = () => {
   const headColumns = [
     {
       title: "",
-      id: "index"
+      id: "index",
     },
     {
       title: "ISm",
@@ -42,14 +42,15 @@ export const TableData = () => {
   return { headColumns };
 };
 
-export const FetchFunction = () => {
+export const FetchFunction = ({ filterParams = {} }: { filterParams: any }) => {
   const { data, isLoading } = useCQuery({
     key: `GET_PASSENGERS_LIST`,
     endpoint: `/rider-list`,
     params: {
-      page: 1,
+      page: filterParams.page || 1,
+      perPage: filterParams.parPage || 10
     },
   });
 
-  return { bodyData: data?.data ?? [], isLoading };
+  return { bodyData: data ?? [], isLoading };
 };

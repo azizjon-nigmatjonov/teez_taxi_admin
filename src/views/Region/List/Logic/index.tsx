@@ -33,12 +33,13 @@ export const TableData = () => {
   return { headColumns };
 };
 
-export const FetchFunction = () => {
+export const FetchFunction = ({ filterParams }: { filterParams: any }) => {
   const { data, isLoading } = useCQuery({
     key: `GET_REGION_LIST`,
     endpoint: `/region-list`,
     params: {
-      // page: 1,
+      page: filterParams.page || 1,
+      perPage: filterParams.perPage || 10
     },
   });
 

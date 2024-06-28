@@ -11,13 +11,13 @@ export const FilterHeader = ({
   openFilter: () => void;
   clearFilter: (val: string, val2?: any) => void;
 }) => {
-  const { filters } = getStoredFilters({});
+  const { filterParams } = getStoredFilters({});
   
   return (
     <div className="mb-5 flex justify-between">
       <FilterButton text="filter" open={filter} openFilter={openFilter} />
       <div className="flex gap-4 w-full flex-wrap text-sm ml-5">
-        {Object.entries(filters)?.map(([key, obj]: [string, any]) => (
+        {Object.entries(filterParams)?.map(([key, obj]: [string, any]) => (
           <Items key={key} title={key} obj={obj} clearFilter={clearFilter} />
         ))}
       </div>

@@ -1,5 +1,5 @@
 import { Pagination } from "@mui/material";
-// import PaginationLimits from "./Limit";
+// import PaginationLimits from "./";
 import { usePaginationCount } from "../../../../../hooks/usePaginationCount";
 import {
   createSearchParams,
@@ -67,7 +67,9 @@ const CPagination = ({
 
   return (
     <div className="table__pagination  flex items-center justify-between border-t border-lightGray px-3">
-      <div></div>
+      <div>
+        {/* <PaginationLimits /> */}
+      </div>
       <Pagination
         onChange={(e, val) => {
           console.log("e pagination", e);
