@@ -33,13 +33,13 @@ const PassengerInner = () => {
             <HFImageUpload name="image" control={control} />
             <div className="mt-5 grid grid-cols-3 gap-x-5">
               <HFTextField name="name" control={control} placeholder="Ism" />
-              <HFDatePicker
+              {/* <HFDatePicker
                 name="birthday"
                 label="Tug'ilgan sana"
                 control={control}
                 required={true}
                 placeholder="Tug'ilgan sana"
-              />
+              /> */}
             </div>
           </CCard>
         </form>
