@@ -1,0 +1,1 @@
+import{j as e}from"./index-Cc7Ts1A1.js";const o="_label_19ix3_30",c="_required_19ix3_34",s={"remove-scroll":"_remove-scroll_19ix3_1","designed-scroll":"_designed-scroll_19ix3_9",label:o,required:c},_=({title:l="",required:r,styles:i={}})=>e.jsxs("p",{className:s.label,style:{...i},children:[r?e.jsx("span",{className:s.required,children:"*"}):"",l]});export{_ as C};

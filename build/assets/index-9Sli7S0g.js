@@ -1,0 +1,1 @@
+import{j as r}from"./index-Cc7Ts1A1.js";import{H as e,C as a}from"./index-F_NuWqk8.js";const s=[{label:"Sozlamalar",link:"/settings/profile"},{label:"Profil ma'lumotlari"}],i=()=>r.jsxs(r.Fragment,{children:[r.jsx(e,{extra:r.jsx(a,{items:s,progmatic:!0,type:"link"})}),r.jsx("div",{className:"container"})]});export{i as default};
